@@ -5,10 +5,36 @@
 
 class Robot: public IterativeRobot
 {
+
+	RobotDrive giantRobot;
+	Joystick stick_left;
+	Joystick stick_right;
+	Joystick gamepad;
+	Encoder encoder;
+	CANTalon lift;
+	CANTalon arm_left;
+	CANTalon arm_right;
+
 private:
 	Command *autonomousCommand;
 	LiveWindow *lw;
-	Joystick::Joystick(STICK_LEFT);
+
+
+	Robot:giantRobot(LEFT_MOTOR_FRONT,
+			LEFT_MOTOR_REAR,
+			RIGHT_MOTOR_FRONT,
+			RIGHT_MOTOR_REAR);
+
+	Robot:stick_left(STICK_LEFT);
+	Robot:stick_right(STICK_RIGHT);
+	Robot:gamepad(GAMEPAD);
+
+	Robot:encoder(ENCODER_CHANNEL_A, ENCODER_CHANNEL_B);
+
+	Robot:lift(LIFT_MOTOR);
+	Robot:arm_left(ARM_LEFT);
+	Robot:arm_right(ARM_RIGHT);
+
 
 	void RobotInit()
 	{
@@ -50,6 +76,10 @@ private:
 	void TeleopPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
+
+		giantRobot.TankDrive(stick_left, stick_right);
+
+
 	}
 
 	void TestPeriodic()
@@ -57,10 +87,6 @@ private:
 		lw->Run();
 	}
 
-	void OperatorControl()
-	{
-
-	}
 
 };
 

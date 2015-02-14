@@ -10,11 +10,6 @@
  * floating around.
  */
  
-// For example to map the left and right motors, you could define the
-// following variables to use with your drivetrain subsystem.
-//const int LEFTMOTOR = 1;
-//const int RIGHTMOTOR = 2;
-
 // If you are using multiple modules, make sure to define both the port
 // number and the module. For example you with a rangefinder:
 //const int RANGE_FINDER_PORT = 1;
@@ -28,10 +23,10 @@ static const uint32_t GAMEPAD = 2;
 
 //DRIVING MOTORS
 
-static const uint32_t LEFT_MOTOR_FRONT_PORT = 1;
-static const uint32_t LEFT_MOTOR_REAR_PORT = 2;
-static const uint32_t RIGHT_MOTOR_FRONT_PORT = 3;
-static const uint32_t RIGHT_MOTOR_REAR_PORT = 4;
+static const uint32_t LEFT_MOTOR_FRONT = 1;
+static const uint32_t LEFT_MOTOR_REAR = 2;
+static const uint32_t RIGHT_MOTOR_FRONT = 3;
+static const uint32_t RIGHT_MOTOR_REAR = 4;
 
 //PNEUMATICS
 
