@@ -14,6 +14,9 @@ class Robot: public IterativeRobot
 	CANTalon lift;
 	CANTalon arm_left;
 	CANTalon arm_right;
+	Compressor compressor;
+	DigitalInput top_limit;
+	DigitalInput bottom_limit;
 
 private:
 	Command *autonomousCommand;
@@ -34,6 +37,11 @@ private:
 	Robot:lift(LIFT_MOTOR);
 	Robot:arm_left(ARM_LEFT);
 	Robot:arm_right(ARM_RIGHT);
+
+	Robot:compressor();
+
+	Robot:top_limit(TOP_LIMIT);
+	Robot:bottom_limit(BOTTOM_LIMIT);
 
 
 	void RobotInit()
@@ -77,7 +85,11 @@ private:
 	{
 		Scheduler::GetInstance()->Run();
 
+		compressor.Start();
+
 		giantRobot.TankDrive(stick_left, stick_right);
+
+
 
 
 	}
