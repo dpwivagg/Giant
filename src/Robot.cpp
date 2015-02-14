@@ -2,9 +2,11 @@
 #include "Commands/Command.h"
 #include "Commands/ExampleCommand.h"
 #include "CommandBase.h"
+#include "RobotMap.h"
 
 class Robot: public IterativeRobot
 {
+
 
 	RobotDrive giantRobot;
 	Joystick stick_left;
@@ -18,30 +20,38 @@ class Robot: public IterativeRobot
 	DigitalInput top_limit;
 	DigitalInput bottom_limit;
 
-private:
+	int autoLoopCounter;
+
 	Command *autonomousCommand;
 	LiveWindow *lw;
 
+public:
 
-	Robot:giantRobot(LEFT_MOTOR_FRONT,
+	Robot() :
+		giantRobot(LEFT_MOTOR_FRONT,
 			LEFT_MOTOR_REAR,
 			RIGHT_MOTOR_FRONT,
-			RIGHT_MOTOR_REAR);
+			RIGHT_MOTOR_REAR),
 
-	Robot:stick_left(STICK_LEFT);
-	Robot:stick_right(STICK_RIGHT);
-	Robot:gamepad(GAMEPAD);
+		stick_left(STICK_LEFT),
+		stick_right(STICK_RIGHT),
+		gamepad(GAMEPAD),
 
-	Robot:encoder(ENCODER_CHANNEL_A, ENCODER_CHANNEL_B);
+		encoder(ENCODER_CHANNEL_A, ENCODER_CHANNEL_B),
 
-	Robot:lift(LIFT_MOTOR);
-	Robot:arm_left(ARM_LEFT);
-	Robot:arm_right(ARM_RIGHT);
+		lift(LIFT_MOTOR),
+		arm_left(ARM_LEFT),
+		arm_right(ARM_RIGHT),
 
-	Robot:compressor();
+		compressor(),
 
-	Robot:top_limit(TOP_LIMIT);
-	Robot:bottom_limit(BOTTOM_LIMIT);
+		top_limit(TOP_LIMIT),
+		bottom_limit(BOTTOM_LIMIT),
+
+		autoLoopCounter(0)
+	{
+		giantRobot.SetExpiration(0.1);
+	}
 
 
 	void RobotInit()
