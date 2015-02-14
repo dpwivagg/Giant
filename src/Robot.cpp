@@ -8,12 +8,15 @@ class Robot: public IterativeRobot
 private:
 	Command *autonomousCommand;
 	LiveWindow *lw;
+	Joystick::Joystick(STICK_LEFT);
 
 	void RobotInit()
 	{
 		CommandBase::init();
 		autonomousCommand = new ExampleCommand();
 		lw = LiveWindow::GetInstance();
+
+
 	}
 	
 	void DisabledPeriodic()
@@ -42,6 +45,8 @@ private:
 			autonomousCommand->Cancel();
 	}
 
+
+
 	void TeleopPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
@@ -51,6 +56,12 @@ private:
 	{
 		lw->Run();
 	}
+
+	void OperatorControl()
+	{
+
+	}
+
 };
 
 START_ROBOT_CLASS(Robot);
