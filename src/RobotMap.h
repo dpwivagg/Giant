@@ -30,7 +30,9 @@ static const uint32_t RIGHT_MOTOR_REAR = 4;
 
 //PNEUMATICS
 
-//static const uint32_t SOLENOID_PORT = 0;
+//Need the Pneumatics Control Module Channel for the compressor
+//static const uint32_t COMPRESSOR_CHANNEL = ;
+static const uint32_t SOLENOID_CHANNEL = 0;
 
 //TALONS
 

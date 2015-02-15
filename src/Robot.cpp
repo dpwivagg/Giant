@@ -19,6 +19,7 @@ class Robot: public IterativeRobot
 	Compressor compressor;
 	DigitalInput top_limit;
 	DigitalInput bottom_limit;
+	Solenoid solenoid;
 
 	int autoLoopCounter;
 
@@ -43,10 +44,12 @@ public:
 		arm_left(ARM_LEFT),
 		arm_right(ARM_RIGHT),
 
-		compressor(),
+		compressor(/*COMPRESSOR_CHANNEL*/),
 
 		top_limit(TOP_LIMIT),
 		bottom_limit(BOTTOM_LIMIT),
+
+		solenoid(SOLENOID_CHANNEL),
 
 		autoLoopCounter(0)
 	{
