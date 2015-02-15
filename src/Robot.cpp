@@ -90,6 +90,7 @@ public:
 		// this line or comment it out.
 		if (autonomousCommand != NULL)
 			autonomousCommand->Cancel();
+
 	}
 
 
@@ -98,13 +99,29 @@ public:
 	{
 		Scheduler::GetInstance()->Run();
 
+		//Start the compressor
 		compressor.Start();
 
+		//Drive using tank drive
 		giantRobot.TankDrive(stick_left, stick_right);
 
+		//Raise the arm
 
 
+		//Lower the arm
 
+
+		//Move the arm to position (top)
+		if(gamepad.GetRawButton(/*which button?*/))
+		{
+
+		}
+
+		//Move the arm to position (bottom)
+		if(gamepad.GetRawButton(/*which button?*/))
+		{
+
+		}
 	}
 
 	void TestPeriodic()
