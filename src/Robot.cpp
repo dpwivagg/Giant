@@ -44,7 +44,7 @@ public:
 		arm_left(ARM_LEFT),
 		arm_right(ARM_RIGHT),
 
-		compressor(/*COMPRESSOR_CHANNEL*/),
+		compressor(),
 
 		top_limit(TOP_LIMIT),
 		bottom_limit(BOTTOM_LIMIT),
@@ -80,6 +80,18 @@ public:
 	void AutonomousPeriodic()
 	{
 		Scheduler::GetInstance()->Run();
+
+		compressor.Start();
+
+		lift.Set(0.5);
+
+	}
+
+	void Autonomous()
+	{
+		lift.Set(0.5);
+
+		compressor.Start();
 	}
 
 	void TeleopInit()
@@ -104,6 +116,7 @@ public:
 
 		//Drive using tank drive
 		giantRobot.TankDrive(stick_left, stick_right);
+		Wait(0.005);
 
 		//Raise the arm
 
@@ -112,16 +125,21 @@ public:
 
 
 		//Move the arm to position (top)
-		if(gamepad.GetRawButton(/*which button?*/))
-		{
+		//if(gamepad.GetRawButton(/*which button?*/))
+		//{
 
-		}
+		//}
 
 		//Move the arm to position (bottom)
-		if(gamepad.GetRawButton(/*which button?*/))
-		{
+		//if(gamepad.GetRawButton(/*which button?*/))
+		//{
 
-		}
+		//}
+
+		lift.Set(gamepad.GetRawAxis(1));
+
+
+
 	}
 
 	void TestPeriodic()
